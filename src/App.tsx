@@ -69,9 +69,9 @@ function App() {
             <div className="visual-orbit orbit-a" /><div className="visual-orbit orbit-b" />
             <div className="portrait-card">
               <div className="portrait-top"><span className="mono">PROFILE / 001</span><span className="live-mark"><span /> OPEN TO OPPORTUNITY</span></div>
-              <div className="portrait-art" aria-label="Profile monogram for Chamindu Aloka">
-                <div className="portrait-glow" /><div className="portrait-silhouette"><div className="portrait-head" /><div className="portrait-neck" /><div className="portrait-body" /></div>
-                <div className="monogram">CA</div><span className="portrait-cross cross-one">+</span><span className="portrait-cross cross-two">+</span>
+              <div className="portrait-art">
+                <img className="portrait-photo" src={`${import.meta.env.BASE_URL}chamindu-profile.jpg`} alt="Chamindu Aloka wearing a light blazer and sunglasses" />
+                <div className="portrait-vignette" />
               </div>
               <div className="portrait-bottom"><div><span className="mono muted">CURRENTLY</span><strong>Learning. Building. Growing.</strong></div><span className="corner-arrow"><ArrowUpRight size={17} /></span></div>
             </div>
