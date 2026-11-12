@@ -18,4 +18,25 @@
 .portrait-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.68);transform-origin:center top;filter:saturate(.9) contrast(1.02)}.portrait-vignette{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,8,13,.04) 45%,rgba(7,8,13,.42));pointer-events:none}
 .skill-groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:23px}.skill-group{border:1px solid var(--line);border-radius:9px;background:linear-gradient(120deg,var(--surface),transparent);padding:18px}.skill-group>.mono,.language-strip>.mono{font-size:8px;letter-spacing:1px}.skill-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:13px}.skill-tag{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--line);border-radius:6px;color:var(--muted);font-size:9px}.skill-tag small{font:7px var(--mono);color:var(--purple);letter-spacing:.5px}.skill-note{display:flex;align-items:center;gap:9px;margin-top:12px;color:var(--dim)}.skill-note svg{color:var(--purple)}.skill-note p{font-size:9px;margin:0}.language-strip{display:flex;align-items:center;gap:16px;padding-top:18px;margin-top:17px;border-top:1px solid var(--line);color:var(--muted);font-size:9px}.language-strip>.mono{margin-right:5px}.certificate-card{display:flex;align-items:center;gap:13px;padding:17px 0;border-bottom:1px solid var(--line)}.certificate-icon{width:31px;height:31px;display:grid;place-items:center;border:1px solid rgba(166,140,255,.23);border-radius:50%;color:var(--purple);background:var(--glow)}.certificate-type{font-size:8px;letter-spacing:1px}.certificate-card h3{font-size:12px;margin:6px 0;font-weight:650}.certificate-card p{font-size:9px;color:var(--muted);margin:0}.certificate-card p span{padding:0 4px;color:var(--dim)}.contact-email{font:9px var(--mono);color:var(--muted)}
 @media(max-width:760px){.skill-groups{grid-template-columns:1fr}.skill-group{padding:15px}.language-strip{gap:12px;flex-wrap:wrap}.contact-email{font-size:8px}}
+.skill-groups{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch;gap:14px}
+.skill-group{padding:19px 16px;transition:border-color .3s ease,background .3s ease,transform .3s ease}
+.skill-group:hover{border-color:rgba(166,140,255,.28);background:linear-gradient(140deg,var(--surface-2),rgba(120,96,190,.055))}
+.skill-tags{gap:9px}
+.skill-tag{position:relative;flex:1 1 calc(50% - 9px);min-width:calc(50% - 9px);min-height:51px;box-sizing:border-box;padding:8px;gap:9px;background:rgba(255,255,255,.018);font-size:9px;transition:border-color .22s ease,background .22s ease,box-shadow .22s ease}
+.skill-tag:hover{border-color:rgba(166,140,255,.42);background:rgba(141,111,220,.075);box-shadow:0 7px 20px rgba(0,0,0,.12)}
+.skill-logo{display:grid;place-items:center;width:31px;height:31px;flex:none;border-radius:7px;background:rgba(255,255,255,.055);font:700 10px var(--mono);letter-spacing:-.6px;transition:transform .25s ease,filter .25s ease}
+.skill-tag:hover .skill-logo{transform:rotate(-5deg) scale(1.08);filter:brightness(1.14)}
+.skill-logo-adobe{background:linear-gradient(145deg,#18263d,#101722);color:#63b7ff;font:800 12px Arial,sans-serif;letter-spacing:-.4px}
+.skill-logo-java{color:#ff9c53;background:rgba(247,119,36,.1)}
+.skill-logo-python{color:#ffd45b;background:linear-gradient(145deg,rgba(55,117,180,.2),rgba(255,212,91,.09))}
+.skill-logo-mysql{color:#71c6e7;background:rgba(0,117,143,.13)}
+.skill-logo-creative{color:#c2a9ff;background:rgba(141,111,220,.12);font-size:13px}
+.skill-logo-support{color:#a8b9d0;background:rgba(112,140,175,.11)}
+.skill-logo-office{color:#f58b75;background:rgba(242,89,67,.1)}
+.skill-name{line-height:1.35}
+.skill-tag small{margin-left:auto;white-space:nowrap}
+.skill-note{transition:color .2s ease}
+@media(max-width:980px){.skill-groups{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.skill-groups{grid-template-columns:1fr}.skill-group{padding:16px}.skill-tag{flex:1 1 calc(50% - 9px);min-width:calc(50% - 9px)}}
+@media(prefers-reduced-motion:reduce){.skill-group,.skill-tag,.skill-logo,.skill-note{transition:none!important}}
 
