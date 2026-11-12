@@ -9,9 +9,10 @@ import { profile } from './profile'
 
 type Repo = { id: number; name: string; description: string | null; html_url: string; language: string | null; stargazers_count: number }
 const sections = ['About', 'Skills', 'Education', 'Projects', 'GitHub', 'Contact']
-const skillGroups = [
-  { title: 'CREATIVE SOFTWARE', skills: [{ name: 'Adobe Photoshop', level: 'ADVANCED', mark: 'Ps', icon: 'adobe' }, { name: 'Adobe Premiere Pro', level: 'ADVANCED', mark: 'Pr', icon: 'adobe' }, { name: 'Video editing & color grading', mark: '▶', icon: 'creative' }, { name: 'Graphic design', mark: '✳', icon: 'creative' }] },
-  { title: 'DEVELOPMENT', skills: [{ name: 'Java', mark: 'Java', icon: 'java' }, { name: 'Python', mark: 'Py', icon: 'python' }, { name: 'MySQL', mark: 'SQL', icon: 'mysql' }] },
+type Skill = { name: string; mark: string; icon: string; level?: string; logo?: string }
+const skillGroups: { title: string; skills: Skill[] }[] = [
+  { title: 'CREATIVE SOFTWARE', skills: [{ name: 'Adobe Photoshop', level: 'ADVANCED', mark: 'Ps', icon: 'adobe', logo: 'photoshop.svg' }, { name: 'Adobe Premiere Pro', level: 'ADVANCED', mark: 'Pr', icon: 'adobe', logo: 'premierepro.svg' }, { name: 'Video editing & color grading', mark: '▶', icon: 'creative' }, { name: 'Graphic design', mark: '✳', icon: 'creative' }] },
+  { title: 'DEVELOPMENT', skills: [{ name: 'Java', mark: 'Java', icon: 'java', logo: 'java.svg' }, { name: 'Python', mark: 'Py', icon: 'python', logo: 'python.svg' }, { name: 'MySQL', mark: 'SQL', icon: 'mysql', logo: 'mysql.svg' }] },
   { title: 'IT & PRODUCTIVITY', skills: [{ name: 'IT support', mark: 'IT', icon: 'support' }, { name: 'Microsoft Office', mark: 'M', icon: 'office' }, { name: 'Hardware & software', mark: '</>', icon: 'support' }] },
 ]
 
@@ -96,7 +97,7 @@ function App() {
 
         <section className="content-section section-wrap" id="skills">
           <SectionHeader number="02" title="Technical toolkit" kicker="SKILLS & TECHNOLOGIES" />
-          <div className="skill-groups">{skillGroups.map((group, groupIndex) => <motion.div className="skill-group" key={group.title} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .25 }} transition={{ duration: .48, delay: groupIndex * .09, ease: 'easeOut' }}><span className="mono">{group.title}</span><div className="skill-tags">{group.skills.map((skill, skillIndex) => <motion.div className="skill-tag" key={skill.name} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .3 }} transition={{ duration: .32, delay: groupIndex * .09 + skillIndex * .055 }} whileHover={{ y: -4, scale: 1.025, transition: { duration: .18 } }}><SkillLogo mark={skill.mark} icon={skill.icon} label={skill.name} /><span className="skill-name">{skill.name}</span>{skill.level && <small>{skill.level}</small>}</motion.div>)}</div></motion.div>)}</div>
+          <div className="skill-groups">{skillGroups.map((group, groupIndex) => <motion.div className="skill-group" key={group.title} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .25 }} transition={{ duration: .48, delay: groupIndex * .09, ease: 'easeOut' }}><span className="mono">{group.title}</span><div className="skill-tags">{group.skills.map((skill, skillIndex) => <motion.div className="skill-tag" key={skill.name} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .3 }} transition={{ duration: .32, delay: groupIndex * .09 + skillIndex * .055 }} whileHover={{ y: -4, scale: 1.025, transition: { duration: .18 } }}><SkillLogo mark={skill.mark} icon={skill.icon} label={skill.name} logo={skill.logo} /><span className="skill-name">{skill.name}</span>{skill.level && <small>{skill.level}</small>}</motion.div>)}</div></motion.div>)}</div>
           <div className="skill-note"><Braces size={15} /><p>Software and technology skills I’m building on.</p></div>
           <div className="language-strip"><span className="mono">LANGUAGES</span><span>Sinhala</span><span>English</span><span>Tamil</span></div>
         </section>
@@ -142,10 +143,10 @@ function Fact({ icon, label, value }: { icon: React.ReactNode; label: string; va
   return <div className="fact"><span className="fact-icon">{icon}</span><div><span className="mono">{label}</span><strong>{value}</strong></div></div>
 }
 
-function SkillLogo({ mark, icon, label }: { mark: string; icon: string; label: string }) {
+function SkillLogo({ mark, icon, label, logo }: { mark: string; icon: string; label: string; logo?: string }) {
   const Icon = icon === 'java' ? Coffee : icon === 'mysql' ? Database : icon === 'python' ? Code2 : icon === 'support' ? Terminal : icon === 'office' ? Braces : null
-  return <span className={`skill-logo skill-logo-${icon}`} aria-label={`${label} icon`}>
-    {Icon ? <Icon size={18} strokeWidth={1.8} aria-hidden="true" /> : <span aria-hidden="true">{mark}</span>}
+  return <span className={`skill-logo ${logo ? 'skill-logo-actual' : ''} skill-logo-${icon}`} aria-label={`${label} logo`}>
+    {logo ? <img src={`${import.meta.env.BASE_URL}skills/${logo}`} alt="" /> : Icon ? <Icon size={18} strokeWidth={1.8} aria-hidden="true" /> : <span aria-hidden="true">{mark}</span>}
   </span>
 }
 
