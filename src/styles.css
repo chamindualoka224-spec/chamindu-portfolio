@@ -39,4 +39,51 @@
 @media(max-width:980px){.skill-groups{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:760px){.skill-groups{grid-template-columns:1fr}.skill-group{padding:16px}.skill-tag{flex:1 1 calc(50% - 9px);min-width:calc(50% - 9px)}}
 @media(prefers-reduced-motion:reduce){.skill-group,.skill-tag,.skill-logo,.skill-note{transition:none!important}}
+/* Polished color, depth, and motion across the portfolio */
+:root{--accent-gradient:linear-gradient(105deg,#a985ff 0%,#758dff 54%,#68c8dc 100%);--accent-glow:rgba(133,104,226,.18)}
+:root[data-theme='light']{--accent-gradient:linear-gradient(105deg,#7045d4 0%,#456fd1 58%,#278caa 100%);--accent-glow:rgba(104,75,191,.12)}
+.ambient-one{animation:ambientDrift 16s ease-in-out infinite alternate}
+.ambient-two{animation:ambientDrift 20s ease-in-out infinite alternate-reverse}
+.desktop-nav a,.mobile-nav a{position:relative}
+.desktop-nav a::after{content:"";position:absolute;left:0;right:0;bottom:-7px;height:1px;background:var(--accent-gradient);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+.desktop-nav a:hover::after{transform:scaleX(1)}
+.brand-mark{transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease}
+.brand:hover .brand-mark{transform:rotate(-7deg) translateY(-1px);border-color:rgba(166,140,255,.5);box-shadow:0 0 20px var(--accent-glow)}
+.button-primary,.button-secondary{background-size:180% 100%;background-image:var(--accent-gradient);transition:transform .25s cubic-bezier(.2,.8,.2,1),filter .25s,box-shadow .25s,background-position .4s}
+.button-primary:hover,.button-secondary:hover{background-position:100% 0;box-shadow:0 14px 32px rgba(101,82,186,.31),0 0 24px var(--accent-glow)}
+.orbit-a{border-color:rgba(166,140,255,.18);animation:orbitBreath 8s ease-in-out infinite}
+.orbit-b{border-color:rgba(112,166,255,.22);animation:orbitSpin 48s linear infinite}
+.portrait-card{animation:portraitFloat 7s ease-in-out infinite;transition:box-shadow .35s ease,border-color .35s ease}
+.portrait-card:hover{border-color:rgba(166,140,255,.34);box-shadow:0 34px 95px rgba(0,0,0,.35),0 0 38px var(--accent-glow),inset 0 1px rgba(255,255,255,.05)}
+.float-chip{transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease}
+.chip-code{animation:chipBob 6s ease-in-out infinite}
+.chip-location{animation:chipBob 7s ease-in-out infinite reverse}
+.float-chip:hover{transform:translateY(-4px);border-color:rgba(166,140,255,.38);box-shadow:0 16px 40px rgba(0,0,0,.23),0 0 18px var(--accent-glow)}
+.section-heading{position:relative;overflow:hidden}
+.section-heading::after{content:"";position:absolute;left:0;bottom:-1px;width:110px;height:1px;background:var(--accent-gradient);box-shadow:0 0 14px var(--accent-glow)}
+.section-number{background:linear-gradient(145deg,var(--glow),transparent);box-shadow:0 0 18px rgba(133,104,226,.06);transition:transform .25s ease,box-shadow .25s ease}
+.section-heading:hover .section-number{transform:translateY(-2px);box-shadow:0 5px 22px var(--accent-glow)}
+.section-heading h2{background:var(--accent-gradient);-webkit-background-clip:text;background-clip:text;color:transparent}
+.fact,.education-row,.certificate-card,.social-pending,.project-empty,.repo-card{transition:transform .28s cubic-bezier(.2,.8,.2,1),border-color .28s ease,background .28s ease,box-shadow .28s ease}
+.fact:hover{transform:translateY(-3px);border-color:rgba(166,140,255,.35);box-shadow:0 12px 28px rgba(0,0,0,.12),0 0 22px var(--accent-glow)}
+.fact-icon,.edu-icon,.certificate-icon{transition:transform .28s ease,box-shadow .28s ease,color .28s ease}
+.fact:hover .fact-icon,.education-row:hover .edu-icon,.certificate-card:hover .certificate-icon{transform:scale(1.08) rotate(-4deg);box-shadow:0 0 22px var(--accent-glow)}
+.education-row{padding-left:10px;padding-right:10px;border-radius:9px}
+.education-row:hover{transform:translateX(4px);border-bottom-color:rgba(166,140,255,.34);background:linear-gradient(90deg,var(--accent-glow),transparent 75%)}
+.certificate-card{padding-left:9px;padding-right:9px;border-radius:8px}
+.certificate-card:hover{transform:translateX(4px);border-bottom-color:rgba(166,140,255,.34);background:linear-gradient(90deg,var(--accent-glow),transparent 78%)}
+.project-empty{border-color:var(--line-strong);box-shadow:inset 0 1px rgba(255,255,255,.025)}
+.project-empty:hover{border-color:rgba(166,140,255,.32);box-shadow:0 18px 48px rgba(0,0,0,.15),0 0 32px var(--accent-glow)}
+.contact-orb{animation:orbPulse 9s ease-in-out infinite alternate}
+.social-pending a,.contact-email,.back-top{transition:color .22s ease,transform .22s ease}
+.social-pending a:hover,.contact-email:hover{color:var(--blue)}
+.back-top:hover{color:var(--purple);transform:translateY(-2px)}
+@keyframes ambientDrift{0%{transform:translate3d(-14px,-8px,0) scale(.94)}100%{transform:translate3d(20px,16px,0) scale(1.06)}}
+@keyframes orbitSpin{to{transform:rotate(360deg)}}
+@keyframes orbitBreath{0%,100%{transform:scale(.985);opacity:.7}50%{transform:scale(1.025);opacity:1}}
+@keyframes portraitFloat{0%,100%{translate:0 0}50%{translate:0 -5px}}
+@keyframes chipBob{0%,100%{translate:0 0}50%{translate:0 -5px}}
+@keyframes orbPulse{0%{transform:scale(.92);opacity:.65}100%{transform:scale(1.08);opacity:1}}
+@media(max-width:760px){.education-row:hover,.certificate-card:hover{transform:translateX(2px)}.portrait-card{animation-duration:9s}}
+@media(prefers-reduced-motion:reduce){.ambient-one,.ambient-two,.orbit-a,.orbit-b,.portrait-card,.chip-code,.chip-location,.contact-orb{animation:none!important}.brand-mark,.button-primary,.button-secondary,.section-number,.fact,.education-row,.certificate-card,.social-pending,.project-empty,.repo-card,.fact-icon,.edu-icon,.certificate-icon,.float-chip{transition:none!important}}
 

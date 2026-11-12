@@ -136,7 +136,7 @@ function App() {
 }
 
 function SectionHeader({ number, title, kicker, aside }: { number: string; title: string; kicker: string; aside?: string }) {
-  return <div className="section-heading"><div className="section-heading-left"><span className="section-number mono">{number}</span><div><span className="mono section-kicker">{kicker}</span><h2>{title}</h2></div></div>{aside && <span className="mono section-aside">{aside}</span>}</div>
+  return <motion.div className="section-heading" initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .55 }} transition={{ duration: .55, ease: 'easeOut' }}><div className="section-heading-left"><span className="section-number mono">{number}</span><div><span className="mono section-kicker">{kicker}</span><h2>{title}</h2></div></div>{aside && <span className="mono section-aside">{aside}</span>}</motion.div>
 }
 function Fact({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
   return <div className="fact"><span className="fact-icon">{icon}</span><div><span className="mono">{label}</span><strong>{value}</strong></div></div>
