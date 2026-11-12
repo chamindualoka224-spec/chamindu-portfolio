@@ -9,6 +9,10 @@ import { profile } from './profile'
 
 type Repo = { id: number; name: string; description: string | null; html_url: string; language: string | null; stargazers_count: number }
 const sections = ['About', 'Skills', 'Education', 'Projects', 'GitHub', 'Contact']
+const skillGroups = [
+  { title: 'CREATIVE SOFTWARE', skills: [{ name: 'Adobe Photoshop', level: 'ADVANCED' }, { name: 'Adobe Premiere Pro', level: 'ADVANCED' }, { name: 'Video editing & color grading' }, { name: 'Graphic design' }] },
+  { title: 'IT & PRODUCTIVITY', skills: [{ name: 'IT support' }, { name: 'Microsoft Office' }, { name: 'Hardware & software' }] },
+]
 
 function App() {
   const [theme, setTheme] = useState(() => localStorage.getItem('portfolio-theme') || 'dark')
@@ -85,20 +89,24 @@ function App() {
 
         <section className="content-section section-wrap" id="about">
           <SectionHeader number="01" title="A bit about me" kicker="BEHIND THE SCREEN" />
-          <div className="about-grid"><div className="about-lead"><h3>Early in my journey.<br /><span>Intentional about the path.</span></h3></div><div className="about-text"><p>I’m an IT undergraduate at SLIIT, based in Matara. I completed an IT Diploma at ESOFT during 2025–2026, and I’m working toward a career in software development.</p><p>I’m looking for an internship where I can learn from a team, contribute with care, and turn classroom knowledge into useful software.</p><a className="text-link" href="#contact">Get to know me <ArrowRight size={15} /></a></div></div>
+          <div className="about-grid"><div className="about-lead"><h3>Early in my journey.<br /><span>Intentional about the path.</span></h3></div><div className="about-text"><p>I’m an IT undergraduate at SLIIT, based in Matara. I completed an IT Diploma at ESOFT Metro Campus during 2025–2026, and I’m working toward a career in software development.</p><p>I’m looking for an internship where I can learn from a team, contribute with care, and turn classroom knowledge into useful software.</p><a className="text-link" href="#contact">Get to know me <ArrowRight size={15} /></a></div></div>
           <div className="about-facts"><Fact icon={<MapPin />} label="LOCATION" value="Matara, Sri Lanka" /><Fact icon={<GraduationCap />} label="CURRENTLY" value="IT Undergraduate · SLIIT" /><Fact icon={<Sparkles />} label="LOOKING FOR" value="Software / IT Internship" /></div>
         </section>
 
         <section className="content-section section-wrap" id="skills">
           <SectionHeader number="02" title="Technical toolkit" kicker="SKILLS & TECHNOLOGIES" />
-          <div className="empty-panel skills-empty"><div className="empty-icon"><Braces size={22} /></div><div><h3>Skills, with the right context.</h3><p>Technology and proficiency levels will be added here once confirmed, so recruiters can see an honest picture of what I can demonstrate.</p></div><span className="mono pending-label">DETAILS PENDING</span></div>
+          <div className="skill-groups">{skillGroups.map((group) => <div className="skill-group" key={group.title}><span className="mono">{group.title}</span><div className="skill-tags">{group.skills.map((skill) => <span className="skill-tag" key={skill.name}>{skill.name}{skill.level && <small>{skill.level}</small>}</span>)}</div></div>)}</div>
+          <div className="skill-note"><Braces size={15} /><p>Programming technologies and levels can be added once confirmed.</p></div>
+          <div className="language-strip"><span className="mono">LANGUAGES</span><span>Sinhala</span><span>English</span><span>Tamil</span></div>
         </section>
 
         <section className="content-section section-wrap" id="education">
           <SectionHeader number="03" title="Education" kicker="THE LEARNING SO FAR" />
           <div className="education-list">
-            <div className="education-row"><div className="edu-icon"><GraduationCap size={19} /></div><div className="edu-main"><span className="mono edu-type">UNDERGRADUATE STUDIES</span><h3>Sri Lanka Institute of Information Technology</h3><p>IT Undergraduate</p></div><span className="edu-status"><i /> CURRENT</span></div>
-            <div className="education-row"><div className="edu-icon edu-icon-muted"><Terminal size={18} /></div><div className="edu-main"><span className="mono edu-type">DIPLOMA</span><h3>ESOFT</h3><p>IT Diploma</p></div><span className="edu-date">2025 — 2026</span></div>
+            <div className="education-row"><div className="edu-icon"><GraduationCap size={19} /></div><div className="edu-main"><span className="mono edu-type">UNDERGRADUATE STUDIES</span><h3>Sri Lanka Institute of Information Technology</h3><p>BSc (Honours) in Information Technology · In progress</p></div><span className="edu-status"><i /> CURRENT</span></div>
+            <div className="education-row"><div className="edu-icon edu-icon-muted"><Terminal size={18} /></div><div className="edu-main"><span className="mono edu-type">DIPLOMA</span><h3>ESOFT Metro Campus</h3><p>Diploma in Information Technology</p></div><span className="edu-date">2025 — 2026</span></div>
+            <div className="education-row"><div className="edu-icon edu-icon-muted"><GraduationCap size={18} /></div><div className="edu-main"><span className="mono edu-type">G.C.E. ADVANCED LEVEL</span><h3>Physical Science stream</h3><p>Physics · Chemistry · Combined Mathematics</p></div><span className="edu-date">2024</span></div>
+            <div className="education-row"><div className="edu-icon edu-icon-muted"><GraduationCap size={18} /></div><div className="edu-main"><span className="mono edu-type">G.C.E. ORDINARY LEVEL</span><h3>General Certificate of Education</h3><p>Sri Lanka</p></div><span className="edu-date">2017</span></div>
           </div>
         </section>
 
@@ -112,13 +120,13 @@ function App() {
           <div className="social-pending"><span className="mono">GITHUB PROFILE</span>{profile.githubUsername ? <a href={`https://github.com/${profile.githubUsername}`} target="_blank" rel="noreferrer">@{profile.githubUsername} <ExternalLink size={13} /></a> : <span>Link to be added</span>}</div>
         </div></section>
 
-        <section className="content-section section-wrap extra-section" id="certifications"><SectionHeader number="06" title="Certifications" kicker="CREDENTIALS" /><div className="cert-note"><span className="cert-icon"><Check size={17} /></span><p>Verified certifications will be listed here as they’re earned.</p></div></section>
+        <section className="content-section section-wrap extra-section" id="certifications"><SectionHeader number="06" title="Certifications" kicker="CREDENTIALS" /><div className="certificate-card"><span className="certificate-icon"><Check size={17} /></span><div><span className="mono certificate-type">CREATIVE SOFTWARE</span><h3>Adobe Photoshop — Basic to Advanced</h3><p>master.lk <span>·</span> June 2025</p></div></div></section>
 
         <section className="content-section section-wrap extra-section" id="linkedin"><SectionHeader number="07" title="Let’s connect" kicker="LINKEDIN PROFILE" /><div className="social-pending linkedin-pending"><span className="mono"><Linkedin size={15} /> LINKEDIN</span>{profile.linkedinUrl ? <a href={profile.linkedinUrl} target="_blank" rel="noreferrer">View LinkedIn profile <ExternalLink size={14} /></a> : <span>Profile link to be added</span>}</div></section>
 
         <section className="resume-band"><div className="section-wrap resume-inner"><div><span className="mono">RESUME / CV</span><h2>A concise view of<br />my journey so far.</h2></div>{profile.resumePath ? <a className="button-primary" href={profile.resumePath} download>Download CV <Download size={16} /></a> : <span className="resume-pending">CV available soon</span>}</div></section>
 
-        <section className="contact-section section-wrap" id="contact"><div className="contact-orb" /><SectionHeader number="08" title="Open to what’s next." kicker="CONTACT" /><div className="contact-content"><div><h2>Have an opportunity<br />or an idea?</h2><p>I’d be glad to hear from you. Let’s start a conversation.</p></div><div className="contact-actions">{profile.email ? <a className="button-primary" href={`mailto:${profile.email}`}>Say hello <Mail size={16} /></a> : <span className="contact-pending"><Mail size={16} /> Email address to be added</span>}{profile.linkedinUrl && <a className="button-secondary" href={profile.linkedinUrl} target="_blank" rel="noreferrer"><Linkedin size={15} /> LinkedIn <ArrowUpRight size={14} /></a>}</div></div></section>
+        <section className="contact-section section-wrap" id="contact"><div className="contact-orb" /><SectionHeader number="08" title="Open to what’s next." kicker="CONTACT" /><div className="contact-content"><div><h2>Have an opportunity<br />or an idea?</h2><p>I’d be glad to hear from you. Let’s start a conversation.</p></div><div className="contact-actions">{profile.email ? <><a className="button-primary" href={`mailto:${profile.email}`}>Say hello <Mail size={16} /></a><a className="contact-email" href={`mailto:${profile.email}`}>{profile.email}</a></> : <span className="contact-pending"><Mail size={16} /> Email address to be added</span>}{profile.linkedinUrl && <a className="button-secondary" href={profile.linkedinUrl} target="_blank" rel="noreferrer"><Linkedin size={15} /> LinkedIn <ArrowUpRight size={14} /></a>}</div></div></section>
       </main>
 
       <footer className="footer"><a className="brand footer-brand" href="#home"><span className="brand-mark">c<span>.</span></span><span>chamindu<span className="brand-light">.dev</span></span></a><span className="footer-copy">Designed with intention. © {new Date().getFullYear()} Chamindu Aloka</span><a className="back-top" href="#home">Back to top <ChevronDown size={14} /></a></footer>

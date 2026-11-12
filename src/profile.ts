@@ -1,8 +1,8 @@
-// Add profile details here when confirmed. Empty values keep unverified links off the site.
+// Public profile details confirmed by Chamindu.
 export const profile = {
   githubUsername: 'chamindualoka224-spec',
-  linkedinUrl: '',
-  email: '',
+  linkedinUrl: 'https://www.linkedin.com/in/chamindu-aloka-593b2a406',
+  email: 'chamindualoka224@gmail.com',
   resumePath: '',
 }
 
